@@ -21,3 +21,6 @@ def create_app(config_name: Optional[str] = None) -> Flask:
     app.register_blueprint(public_bp)
 
     return app
+
+# Create app instance for flask run
+app = create_app()
