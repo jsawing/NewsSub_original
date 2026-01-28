@@ -25,7 +25,7 @@ def subscribe_confirm():
     # Use business layer for validation and processing
     service = SubscriptionService()
 
-    # Validate email using business rules
+    # Validate email
     is_valid, error = service.validate_email(email)
     if not is_valid:
         # Return to form with error message, preserving input
