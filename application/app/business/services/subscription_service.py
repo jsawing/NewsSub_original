@@ -1,4 +1,5 @@
 import re
+from typing import Optional, Tuple
 from datetime import datetime, timezone
 
 class SubscriptionService:
@@ -7,7 +8,7 @@ class SubscriptionService:
     # Regex för e-postvalidering
     EMAIL_PATTERN = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 
-    def validate_email(self, email: str) -> tuple[bool, str]:
+    def validate_email(self, email: str) -> Tuple[bool, str]:
         """Validerar e-postformatet. Returnerar (is_valid, error_message)."""
         if not email or not email.strip():
             return False, "Email is required"
@@ -19,13 +20,13 @@ class SubscriptionService:
         """Gör om till små bokstäver och tar bort mellanslag."""
         return email.lower().strip()
 
-    def normalize_name(self, name: str | None) -> str:
+    def normalize_name(self, name: Optional[str]) -> str:
         """Tar bort mellanslag eller returnerar standardvärde."""
         if not name or not name.strip():
             return "Subscriber"
         return name.strip()
 
-    def process_subscription(self, email: str, name: str | None) -> dict:
+    def process_subscription(self, email: str, name: Optional[str]) -> dict:
         """Validerar, normaliserar och paketerar data."""
         is_valid, error = self.validate_email(email)
         if not is_valid:

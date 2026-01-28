@@ -1,9 +1,10 @@
 """News Flash - Application Factory"""
 import os
+from typing import Optional
 from flask import Flask
 from .config import config
 
-def create_app(config_name: str | None = None) -> Flask:
+def create_app(config_name: Optional[str] = None) -> Flask:
     if config_name is None:
         config_name = os.environ.get("FLASK_ENV", "development")
 
