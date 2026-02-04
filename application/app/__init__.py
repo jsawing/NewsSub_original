@@ -49,7 +49,10 @@ def create_app(config_name: str | None = None) -> Flask:
     migrate.init_app(app, db)
 
     # Import models for migration detection
-    from .data.models.subscriber import Subscriber  # noqa: F401
+    #from .data.models.subscriber import Subscriber  # noqa: F401
+
+    # Import models (after db.init_app to avoid circular imports)
+    from .data import models  # noqa: F401
 
     # Register blueprints
     from .presentation.routes.public import bp as public_bp
