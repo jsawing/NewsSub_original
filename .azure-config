@@ -1,4 +1,0 @@
-RESOURCE_GROUP=rg-hello-cicd
-ACR_NAME=acrhellocicd51d3cbec
-LOCATION=swedencentral
-CONTAINER_APP=ca-hello-cicd
